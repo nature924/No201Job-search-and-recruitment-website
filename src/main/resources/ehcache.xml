@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <cache name="resumeCache"
+           maxBytesLocalHeap="50m"
+           timeToLiveSecond="300">
+    </cache>
+</ehcache>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jia.mapper.ResumeMapper" >
+    <resultMap id="BaseMap" type="cn.jia.domain.Resume">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="positionName" column="position_name"/>
+        <result property="flag" column="flag"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="R" column="R"/>
+        <association property="information" column="user_id" select="cn.jia.mapper.InformationMapper.selectByUserId"/>
+        <association property="education" column="user_id" select="cn.jia.mapper.EducationMapper.selectByUserId"/>
+        <association property="campus" column="user_id" select="cn.jia.mapper.CampusMapper.selectByUserId"/>
+        <association property="project" column="user_id" select="cn.jia.mapper.ProjectMapper.selectByUserId"/>
+        <association property="skill" column="user_id" select="cn.jia.mapper.SkillMapper.selectByUserId"/>
+        <association property="work" column="user_id" select="cn.jia.mapper.WorkMapper.selectByUserId"/>
+        <association property="grade" column="user_id" select="cn.jia.mapper.GradeMapper.selectByUserId"/>
+    </resultMap>
+
+    <select id="findByUserId" resultMap="BaseMap">
+            SELECT * FROM resume WHERE user_id = #{user_id} ORDER BY update_time DESC;
+    </select>
+    <select id="findUserId" resultType="int" >
+        SELECT user_id from resume
+    </select>
+    <select id="findFlagByUserIdAndPName" resultType="int" parameterType="map">
+         SELECT flag from resume WHERE user_id = #{userId} and position_name = #{pName}
+    </select>
+
+    <select id="findPositionLikeName" parameterType="String" resultMap="BaseMap">
+        SELECT * FROM resume WHERE
+        1=1
+        <if test="positionName != null and positionName != '' ">
+          AND  position_name LIKE concat('%',#{positionName},'%')
+        </if>
+
+          order BY create_time DESC
+    </select>
+    <insert id="insert" parameterType="cn.jia.domain.Resume">
+        INSERT INTO resume (user_id,position_name,flag,create_time,update_time,R) VALUES
+         (#{userId},#{positionName},#{flag},now(),now(),#{R})
+    </insert>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM resume WHERE id = #{id}
+    </delete>
+
+    <update id="updateR" parameterType="map" >
+        UPDATE resume SET R = 1  WHERE user_id = #{userId} and position_name = #{pName}
+    </update>
+
+    <select id="findAll" resultMap="BaseMap">
+        SELECT * FROM  resume order BY create_time DESC
+    </select>
+</mapper>

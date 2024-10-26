@@ -1,0 +1,38 @@
+package cn.jia.service.serviceImpl;
+
+import cn.jia.dto.DepartmentDTO;
+import cn.jia.dto.JobDTO;
+import cn.jia.mapper.DepartmentMapper;
+import cn.jia.mapper.JobMapper;
+import cn.jia.service.JobService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
+
+/**
+ * @Auther: xyd
+ * @Date: 2019/11/1 11:30
+ * @Description:
+ */
+@Service
+public class JobServiceImpl implements JobService {
+
+    @Autowired
+    private JobMapper jobMapper;
+
+    @Override
+    public PageInfo<JobDTO> selectBySearch(String search, Integer pageNum, Integer pageSize) {
+        if (pageNum != null && pageSize != null) {
+            PageHelper.startPage(pageNum, pageSize);
+        }
+        Example example = new Example(JobDTO.class);
+        if (StringUtils.isNotBlank(search)) {
+            example.createCriteria().andLike("name", "%"+search.trim()+"%");
+        }
+        example.orderBy("createTime").desc();
+        return new PageInfo<>(jobMapper.selectByExample(example));
+    }
+}

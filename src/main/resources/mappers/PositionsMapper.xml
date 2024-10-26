@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jia.mapper.PositionsMapper" >
+  <resultMap id="BaseResultMap" type="cn.jia.domain.Positions" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="p_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_classify" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_describe" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_responsibility" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_request" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_department" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_workSite" jdbcType="VARCHAR" javaType="java.lang.String"/>
+      <arg column="p_flag" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, p_name, p_classify, p_describe, p_responsibility, p_request,p_department,p_workSite, p_flag,create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from positions
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from positions
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="cn.jia.domain.Positions" >
+    insert into positions (id, p_name, p_classify, 
+      p_describe, p_responsibility, p_request,p_department,p_workSite, p_flag,
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{pName,jdbcType=VARCHAR}, #{pClassify,jdbcType=VARCHAR}, 
+      #{pDescribe,jdbcType=VARCHAR}, #{pResponsibility,jdbcType=VARCHAR}, #{pRequest,jdbcType=VARCHAR},
+      #{pDepartment,jdbcType=VARCHAR},
+      #{workSite,jdbcType=VARCHAR},#{flag,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jia.domain.Positions" >
+    insert into positions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pName != null" >
+        p_name,
+      </if>
+      <if test="pClassify != null" >
+        p_classify,
+      </if>
+      <if test="pDescribe != null" >
+        p_describe,
+      </if>
+      <if test="pResponsibility != null" >
+        p_responsibility,
+      </if>
+      <if test="pRequest != null" >
+        p_request,
+      </if>
+      <if test="pDepartment != null">
+        p_department,
+      </if>
+      <if test="workSite != null" >
+        p_workSite,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pName != null" >
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pClassify != null" >
+        #{pClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="pDescribe != null" >
+        #{pDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="pResponsibility != null" >
+        #{pResponsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="pRequest != null" >
+        #{pRequest,jdbcType=VARCHAR},
+      </if>
+      <if test="pDepartment!= null" >
+        #{pDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="workSite != null" >
+        #{workSite,jdbcType=VARCHAR},
+      </if>
+
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jia.domain.Positions" >
+    update positions
+    <set >
+      <if test="pName != null" >
+        p_name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pClassify != null" >
+        p_classify = #{pClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="pDescribe != null" >
+        p_describe = #{pDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="pResponsibility != null" >
+        p_responsibility = #{pResponsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="pRequest != null" >
+        p_request = #{pRequest,jdbcType=VARCHAR},
+      </if>
+      <if test="pDepartment != null">
+        p_department = #{pDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="workSite != null" >
+        p_workSite = #{workSite,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        p_flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jia.domain.Positions" >
+    update positions
+    set p_name = #{pName,jdbcType=VARCHAR},
+      p_classify = #{pClassify,jdbcType=VARCHAR},
+      p_describe = #{pDescribe,jdbcType=VARCHAR},
+      p_responsibility = #{pResponsibility,jdbcType=VARCHAR},
+      p_request = #{pRequest,jdbcType=VARCHAR},
+      p_department = #{pepartment,jdbcType=VARCHAR},
+      p_wokSite =  #{workSite,jdbcType=VARCHAR},
+      p_flag = #{flag,jdbcType=INTEGER}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT  * FROM positions WHERE 1=1
+    <if test=" flag!=null ">
+      and  p_flag = #{flag}
+    </if>
+    order BY create_time DESC
+  </select>
+
+  <select id="findByCondiction" resultMap="BaseResultMap" parameterType="map">
+    SELECT * FROM  positions
+    <where>
+      <if test="flag == 1" >
+        AND  p_flag = 1
+      </if>
+      <if test="flag == 2">
+        AND  p_flag = 2
+      </if>
+      <if test="pClassify.size()>0">
+        AND p_classify IN
+        <foreach collection="pClassify" item="p" index="index" open="(" close=")" separator=",">
+            #{p}
+        </foreach>
+      </if>
+      <if test="workSite != null and workSite.size()>0 " >
+        AND p_workSite IN
+        <foreach collection="workSite" item="w" index="index" open="(" close=")" separator=",">
+          #{w}
+        </foreach>
+      </if>
+      <if test="descs != null and descs.size()>0">
+        AND p_describe IN
+        <foreach collection="descs" item="d" index="index" open="(" close=")" separator=",">
+          #{d}
+        </foreach>
+      </if>
+      <if test="keyWord != null and keyWord != '' ">
+        AND  p_name LIKE concat('%',#{keyWord},'%')
+      </if>
+    </where>
+    order BY create_time DESC
+
+  </select>
+
+  <select id="findDetails" resultMap="BaseResultMap" parameterType="map">
+    SELECT  * FROM positions WHERE p_flag = #{flag} AND p_name = #{pName}
+  </select>
+
+
+
+
+  <select id="findByKeyWord" resultMap="BaseResultMap" parameterType="map">
+    SELECT  * FROM   positions
+    <where>
+      <if test="flag == 1" >
+        AND  p_flag = 1
+      </if>
+      <if test="flag == 2">
+        AND  p_flag = 2
+      </if>
+      <if test="keyWord != null and keyWord != '' ">
+        AND  p_name LIKE concat('%',#{keyWord},'%')
+      </if>
+    </where>
+    order BY create_time DESC
+  </select>
+
+  <select id="selectRandom" resultMap="BaseResultMap" parameterType="int">
+    SELECT * FROM  positions
+    WHERE id >= (SELECT floor(RAND() * (SELECT MAX(id) FROM  positions)))
+    <if test="flag == 1" >
+      AND  p_flag = 1
+    </if>
+    <if test="flag == 2">
+      AND  p_flag = 2
+    </if>
+    ORDER BY id LIMIT 4
+  </select>
+
+
+</mapper>

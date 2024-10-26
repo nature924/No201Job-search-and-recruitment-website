@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jia.mapper.SkillMapper" >
+  <resultMap id="BaseResultMap" type="cn.jia.domain.Skill" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="skill_1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="skill_2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="skill_3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="skill_4" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, skill_1, skill_2, skill_3, skill_4, create_time, update_time
+  </sql>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from skill
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from skill
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jia.domain.Skill" >
+    insert into skill (id, user_id, skill_1, 
+      skill_2, skill_3, skill_4, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{skill1,jdbcType=VARCHAR}, 
+      #{skill2,jdbcType=VARCHAR}, #{skill3,jdbcType=VARCHAR}, #{skill4,jdbcType=VARCHAR}, 
+     now(), now())
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jia.domain.Skill" >
+    insert into skill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="skill1 != null" >
+        skill_1,
+      </if>
+      <if test="skill2 != null" >
+        skill_2,
+      </if>
+      <if test="skill3 != null" >
+        skill_3,
+      </if>
+      <if test="skill4 != null" >
+        skill_4,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="skill1 != null" >
+        #{skill1,jdbcType=VARCHAR},
+      </if>
+      <if test="skill2 != null" >
+        #{skill2,jdbcType=VARCHAR},
+      </if>
+      <if test="skill3 != null" >
+        #{skill3,jdbcType=VARCHAR},
+      </if>
+      <if test="skill4 != null" >
+        #{skill4,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByUserIdSelective" parameterType="cn.jia.domain.Skill" >
+    update skill
+    <set >
+
+      <if test="skill1 != null" >
+        skill_1 = #{skill1,jdbcType=VARCHAR},
+      </if>
+      <if test="skill2 != null" >
+        skill_2 = #{skill2,jdbcType=VARCHAR},
+      </if>
+      <if test="skill3 != null" >
+        skill_3 = #{skill3,jdbcType=VARCHAR},
+      </if>
+      <if test="skill4 != null" >
+        skill_4 = #{skill4,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jia.domain.Skill" >
+    update skill
+    set user_id = #{userId,jdbcType=INTEGER},
+      skill_1 = #{skill1,jdbcType=VARCHAR},
+      skill_2 = #{skill2,jdbcType=VARCHAR},
+      skill_3 = #{skill3,jdbcType=VARCHAR},
+      skill_4 = #{skill4,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

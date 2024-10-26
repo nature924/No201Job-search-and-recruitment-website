@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybaties.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+  <typeAliases >
+      <typeAlias alias="user" type="cn.jia.domain.User"/>
+  </typeAliases>
+
+    <mappers>
+        <mapper resource="mappers/CollectionMapper.xml"></mapper>
+        <mapper resource="mappers/InformationMapper.xml"></mapper>
+        <mapper resource="mappers/PositionsMapper.xml"></mapper>
+        <mapper resource="mappers/QuestionMapper.xml"></mapper>
+        <mapper resource="mappers/UserMapper.xml"></mapper>
+        <mapper resource="mappers/RoleMapper.xml"></mapper>
+        <mapper resource="mappers/ApplyMapper.xml"></mapper>
+        <mapper resource="mappers/CampusMapper.xml"></mapper>
+        <mapper resource="mappers/EducationMapper.xml"></mapper>
+        <mapper resource="mappers/ProjectMapper.xml"></mapper>
+        <mapper resource="mappers/SkillMapper.xml"></mapper>
+        <mapper resource="mappers/WorkMapper.xml"></mapper>
+        <mapper resource="mappers/ResumeMapper.xml"></mapper>
+    </mappers>
+</configuration>

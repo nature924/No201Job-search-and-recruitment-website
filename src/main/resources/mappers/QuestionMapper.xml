@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jia.mapper.QuestionMapper" >
+  <resultMap id="BaseResultMap" type="cn.jia.domain.Question" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="q_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="q_chose" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="q_answer" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="q_classify" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, q_name, q_chose, q_answer, q_classify, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from question
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from question
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jia.domain.Question" >
+    insert into question (id, q_name, q_chose, 
+      q_answer, q_classify, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{qName,jdbcType=VARCHAR}, #{qChose,jdbcType=VARCHAR}, 
+      #{qAnswer,jdbcType=VARCHAR}, #{qClassify,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jia.domain.Question" >
+    insert into question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="qName != null" >
+        q_name,
+      </if>
+      <if test="qChose != null" >
+        q_chose,
+      </if>
+      <if test="qAnswer != null" >
+        q_answer,
+      </if>
+      <if test="qClassify != null" >
+        q_classify,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="qName != null" >
+        #{qName,jdbcType=VARCHAR},
+      </if>
+      <if test="qChose != null" >
+        #{qChose,jdbcType=VARCHAR},
+      </if>
+      <if test="qAnswer != null" >
+        #{qAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="qClassify != null" >
+        #{qClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jia.domain.Question" >
+    update question
+    <set >
+      <if test="qName != null" >
+        q_name = #{qName,jdbcType=VARCHAR},
+      </if>
+      <if test="qChose != null" >
+        q_chose = #{qChose,jdbcType=VARCHAR},
+      </if>
+      <if test="qAnswer != null" >
+        q_answer = #{qAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="qClassify != null" >
+        q_classify = #{qClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jia.domain.Question" >
+    update question
+    set q_name = #{qName,jdbcType=VARCHAR},
+      q_chose = #{qChose,jdbcType=VARCHAR},
+      q_answer = #{qAnswer,jdbcType=VARCHAR},
+      q_classify = #{qClassify,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectQuestionRandomByType"  resultMap="BaseResultMap" parameterType="String">
+    SELECT * FROM (SELECT * FROM question WHERE q_classify = #{type}) as Q
+
+    ORDER BY RAND()  LIMIT 10
+
+</select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT * FROM question  order BY create_time DESC
+  </select>
+  <select id="findByType" parameterType="String" resultMap="BaseResultMap">
+    SELECT * FROM question WHERE q_classify LIKE concat('%',#{type},'%')
+  </select>
+</mapper>

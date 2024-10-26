@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="812d131a-7cee-4bf1-b007-867cca26ba0a" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\maven\repository" />
+        <option name="mavenHome" value="D:/maven/apache-maven-3.8.1" />
+        <option name="userSettingsFile" value="D:\maven\apache-maven-3.8.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2ICywk0KSo3nXB01S7WJIEn2FsI" />
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunManager">
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="boot_zhaopin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.jia.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="812d131a-7cee-4bf1-b007-867cca26ba0a" name="Default Changelist" comment="" />
+      <created>1669700100585</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669700100585</updated>
+      <workItem from="1669700104955" duration="2114000" />
+      <workItem from="1669861189590" duration="118000" />
+      <workItem from="1669963614374" duration="658000" />
+      <workItem from="1669967970305" duration="617000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1649" height="295" key="GridCell.Tab.0.bottom" timestamp="1669968684612">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1649" height="295" key="GridCell.Tab.0.bottom/0.0.1707.1027@0.0.1707.1027" timestamp="1669968684612" />
+    <state width="1649" height="295" key="GridCell.Tab.0.center" timestamp="1669968684612">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1649" height="295" key="GridCell.Tab.0.center/0.0.1707.1027@0.0.1707.1027" timestamp="1669968684612" />
+    <state width="1649" height="295" key="GridCell.Tab.0.left" timestamp="1669968684612">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1649" height="295" key="GridCell.Tab.0.left/0.0.1707.1027@0.0.1707.1027" timestamp="1669968684612" />
+    <state width="1649" height="295" key="GridCell.Tab.0.right" timestamp="1669968684612">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1649" height="295" key="GridCell.Tab.0.right/0.0.1707.1027@0.0.1707.1027" timestamp="1669968684612" />
+    <state width="1649" height="295" key="GridCell.Tab.1.bottom" timestamp="1669968684612">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1649" height="295" key="GridCell.Tab.1.bottom/0.0.1707.1027@0.0.1707.1027" timestamp="1669968684612" />
+    <state width="1649" height="295" key="GridCell.Tab.1.center" timestamp="1669968684612">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1649" height="295" key="GridCell.Tab.1.center/0.0.1707.1027@0.0.1707.1027" timestamp="1669968684612" />
+    <state width="1649" height="295" key="GridCell.Tab.1.left" timestamp="1669968684612">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1649" height="295" key="GridCell.Tab.1.left/0.0.1707.1027@0.0.1707.1027" timestamp="1669968684612" />
+    <state width="1649" height="295" key="GridCell.Tab.1.right" timestamp="1669968684612">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1649" height="295" key="GridCell.Tab.1.right/0.0.1707.1027@0.0.1707.1027" timestamp="1669968684612" />
+    <state x="355" y="156" key="SettingsEditor" timestamp="1669700121271">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="355" y="156" key="SettingsEditor/0.0.1707.1027@0.0.1707.1027" timestamp="1669700121271" />
+    <state x="534" y="246" width="638" height="534" key="find.popup" timestamp="1669700171875">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="534" y="246" width="638" height="534" key="find.popup/0.0.1707.1027@0.0.1707.1027" timestamp="1669700171875" />
+  </component>
+</project>

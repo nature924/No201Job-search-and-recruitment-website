@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jia.mapper.ApplyMapper" >
+    <resultMap id="BaseResultMap" type="cn.jia.domain.Apply" >
+        <constructor >
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="p_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="resume_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="state" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="handle_user" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="handle_time"  javaType="java.util.Date" />
+            <arg column="apply_time"  javaType="java.util.Date" />
+        </constructor>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+    id, user_id, p_id,resume_id,state,handle_time,handle_user,apply_time
+    </sql>
+
+    <insert id="insert" parameterType="cn.jia.domain.Apply">
+    insert into apply (id, user_id, p_id,resume_id,state,handle_time,handle_user,apply_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER},#{resumeId,jdbcType=INTEGER}
+    ,#{state},#{handleTime},#{handleUser},#{applyTime}
+    )
+    </insert>
+
+    <select id="findByUserIdAndPId" resultMap="BaseResultMap" parameterType="map">
+        SELECT <include refid="Base_Column_List" />
+        FROM apply WHERE user_id = #{userId} AND p_id = #{pId}
+    </select>
+
+    <update id="updateState" parameterType="map">
+        update apply
+        set state = #{state},
+        handle_user = #{handleUser},
+        handle_time = #{handleTime}
+        where id = #{applyId}
+    </update>
+
+    <select id="findApplys" resultType="cn.jia.dto.ApplyDto">
+        select
+        a.id as applyId,
+        a.apply_time as applyTime,
+        u.username as userName,
+        p.p_flag as flag,
+        p.p_name as positionName,
+        a.state
+        from apply a
+        left join `user` u on u.id = a.user_id
+        left join positions p on p.id = a.p_id
+        <if test="userId != null">
+            where a.user_id = #{userId}
+        </if>
+        <if test="search != null">
+            where p.p_name like concat('%',#{search},'%')
+        </if>
+        order by a.id desc
+    </select>
+</mapper>

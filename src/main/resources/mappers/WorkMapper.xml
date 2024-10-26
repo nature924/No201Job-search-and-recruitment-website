@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jia.mapper.WorkMapper" >
+  <resultMap id="BaseResultMap" type="cn.jia.domain.Work" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="company" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="duty" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="from_time" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="to_time" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="responsibility" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, company, duty, from_time, to_time, responsibility, create_time, update_time
+  </sql>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from work
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from work
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jia.domain.Work" >
+    insert into work (id, user_id, company, 
+      duty, from_time, to_time, 
+      responsibility, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{company,jdbcType=VARCHAR}, 
+      #{duty,jdbcType=VARCHAR}, #{fromTime,jdbcType=VARCHAR}, #{toTime,jdbcType=VARCHAR}, 
+      #{responsibility,jdbcType=VARCHAR}, now(),  now()
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jia.domain.Work" >
+    insert into work
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="fromTime != null" >
+        from_time,
+      </if>
+      <if test="toTime != null" >
+        to_time,
+      </if>
+      <if test="responsibility != null" >
+        responsibility,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="fromTime != null" >
+        #{fromTime,jdbcType=VARCHAR},
+      </if>
+      <if test="toTime != null" >
+        #{toTime,jdbcType=VARCHAR},
+      </if>
+      <if test="responsibility != null" >
+        #{responsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByUserIdSelective" parameterType="cn.jia.domain.Work" >
+    update work
+    <set >
+
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="fromTime != null" >
+        from_time = #{fromTime,jdbcType=VARCHAR},
+      </if>
+      <if test="toTime != null" >
+        to_time = #{toTime,jdbcType=VARCHAR},
+      </if>
+      <if test="responsibility != null" >
+        responsibility = #{responsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jia.domain.Work" >
+    update work
+    set user_id = #{userId,jdbcType=INTEGER},
+      company = #{company,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR},
+      from_time = #{fromTime,jdbcType=VARCHAR},
+      to_time = #{toTime,jdbcType=VARCHAR},
+      responsibility = #{responsibility,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
